@@ -124,7 +124,7 @@ class CloudflareBackend(BaseBackend):
                 purge_url,
                 json=data,
                 headers=headers,
-            )
+            timeout=60)
 
             try:
                 response_json = response.json()
