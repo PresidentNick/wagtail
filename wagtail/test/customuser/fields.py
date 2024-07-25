@@ -1,6 +1,6 @@
-import random
 
 from django.db import models
+import secrets
 
 LOWER_BOUND = -2147483648
 UPPER_BOUND = 2147483647
@@ -43,7 +43,7 @@ class ConvertedValueField(models.IntegerField):
     def pre_save(self, instance, add):
         value = getattr(instance, self.attname, None)
         if not value:
-            value = ConvertedValue(random.randint(LOWER_BOUND, UPPER_BOUND))
+            value = ConvertedValue(secrets.SystemRandom().randint(LOWER_BOUND, UPPER_BOUND))
             setattr(instance, self.attname, value)
         return value
 

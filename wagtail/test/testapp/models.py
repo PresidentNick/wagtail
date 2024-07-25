@@ -1,7 +1,6 @@
 import datetime
 import hashlib
 import os
-import random
 import string
 import uuid
 
@@ -83,6 +82,7 @@ from wagtail.snippets.blocks import SnippetChooserBlock
 from wagtail.snippets.models import register_snippet
 
 from .forms import FormClassAdditionalFieldPageForm, ValidatedPageForm
+import secrets
 
 EVENT_AUDIENCE_CHOICES = (
     ("public", _("Public")),
@@ -2159,7 +2159,7 @@ class GenericSnippetNoFieldIndexPage(GenericSnippetPage):
 def random_quotable_pk():
     quote_chrs = '":/_#?;@&=+$,"[]<>%\n\\'
     components = (quote_chrs, string.ascii_letters, string.digits)
-    return "".join(random.choice(components[i % len(components)]) for i in range(10))
+    return "".join(secrets.choice(components[i % len(components)]) for i in range(10))
 
 
 # Models to be registered with a ModelViewSet
