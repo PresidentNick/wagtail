@@ -1,6 +1,6 @@
 import json
-import random
 import string
+import secrets
 
 ALPHANUM = string.ascii_lowercase + string.digits
 
@@ -10,7 +10,7 @@ class Block:
         self.type = typ
         self.depth = depth
         self.text = ""
-        self.key = key if key else "".join(random.choice(ALPHANUM) for _ in range(5))
+        self.key = key if key else "".join(secrets.choice(ALPHANUM) for _ in range(5))
         self.inline_style_ranges = []
         self.entity_ranges = []
 
